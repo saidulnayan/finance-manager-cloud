@@ -132,9 +132,12 @@ python app.py
 
 ## DevOps
 
+```bash
 git version
 docker version
 az version
 kubectl version --client
 terraform -version
+
+```
 
