@@ -1,0 +1,10 @@
+# Ignore Terraform local provider cache
+.terraform/
+
+# Ignore sensitive state files
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+
+# Ignore the plan files
+*.tfplan

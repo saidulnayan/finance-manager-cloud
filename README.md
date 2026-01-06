@@ -139,5 +139,7 @@ az version
 kubectl version --client
 terraform -version
 
+docker build -t finance-app .
+docker run -p 5000:5000 finance-app
 ```
 
