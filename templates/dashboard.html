@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Personal Finance Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+     <!-- Top Navbar -->
+    <nav class="top-nav">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div class="logo">💰</div>
+        <div class="title">Personal Finance Dashboard</div>
+        <div class="user-icon">👤</div>
+    </nav>
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <ul>
+            <li data-page="dashboard" onclick="showPage('dashboard')" class="active">Dashboard</li>
+            <li data-page="accounts" onclick="showPage('accounts')">Accounts</li>
+            <li data-page="income" onclick="showPage('income')">Income</li>
+            <li data-page="transactions" onclick="showPage('transactions')">Transactions</li>
+            <li data-page="balance" onclick="showPage('balance')">Balance</li>
+            <li data-page="budgets" onclick="showPage('budgets')">Budgets</li>
+            <li data-page="savings" onclick="showPage('savings')">Savings</li>
+       </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Dashboard -->
+        <div id="yearBox" style="font-weight: bold; font-size: 24px; margin-bottom: 12px; display: block;">
+            Select Year:
+            <select id="yearSelect" style="font-size: 24px;"></select>
+        </div>
+
+        <section id="dashboard" class="page active">
+            <div class="dashboard-cards">
+                <div class="card left-card">
+                    <h3>Income Chart</h3>
+                    <canvas id="incomeChart"></canvas>
+                    <div id="incomeStats"></div>
+                </div>
+
+                <div class="card right-card">
+                    <h3>Income Forecast</h3>
+                    <pre id="incomeForecast"></pre>
+                </div>
+            </div>
+
+            <div class="currency-section">
+                <h3>Currency Rates & Conversion</h3>
+                <table id="currencyTable">
+                    <thead><tr><th>Currency</th><th>Rate</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="currency-convert">
+                    <input type="number" id="curAmount1" placeholder="Amount">
+                    <select id="curSelect1"></select>
+                    <input type="number" id="curAmount2" placeholder="Converted">
+                    <select id="curSelect2"></select>
+                    <button onclick="convertCurrency()">Convert</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accounts -->
+        <section id="accounts" class="page">
+            <button onclick="openCreateAccount()">Create Account</button>
+            <div id="accountPopup" class="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup('account')">&times;</span>
+                    <h3>Create Account</h3>
+                    <label for="accId">Account ID</label>
+                    <input type="text" id="accId" placeholder="4-digit Account ID">
+                    <label for="accName">Account Name</label>
+                    <input type="text" id="accName" placeholder="Account Name">
+                    <label for="accType">Account Type</label>
+                    <select id="accType">
+                        <option>Savings Account</option>
+                        <option>Cash Account</option>
+                        <option>Card</option>
+                    </select>
+                    <label for="accCurrency">Currency</label>
+                    <select id="accCurrency">
+                        <option disabled>USD</option>
+                        <option disabled>Euro</option>
+                        <option disabled>BDT</option>
+                        <option>HUF</option>
+                    </select>
+                    <button id="accountCreateBtn" onclick="createAccount()">Create</button>
+                    <button id="accountUpdateBtn" onclick="updateAccountConfirm()">Update</button>
+                </div>
+            </div>
+            <table id="accountsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Currency</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Transactions -->
+        
+        <section id="transactions" class="page">
+            <select id="txFilter" onchange="loadTransactions()" style="float:right; margin-right: 5px; font-weight: bold;">
+                <option value="">All</option>
+            </select>
+            
+            <button onclick="openCreateTransaction()">Create Transaction</button>
+            <div id="transactionPopup" class="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup('transaction')">&times;</span>
+                    <h3 id="transactionPopupTitle">Create Transaction</h3>
+                    <label for="txAccountId">Account ID</label>
+                    <input type="number" id="txAccountId" placeholder="4 digit Account ID">
+                    <label for="txAmount">Amount</label>
+                    <input type="number" step="0.01" id="txAmount" placeholder="Amount">
+                    <label for="txDate">Date</label>
+                    <input type="date" id="txDate">
+                    <label for="txDesc">Expense Catagory</label>
+                    <select id="txDesc">
+                        <option>Education</option>
+                        <option>Food</option>
+                        <option>Cloths</option>
+                        <option>Health</option>
+                        <option>Transportation</option>
+                        <option>Utility</option>
+                        <option>Living</option>
+                        <option>Household</option>
+                        <option>Hobbies</option>
+                        <option>Others</option>
+                    </select>
+                    <button id="transactionCreateBtn" onclick="createTransaction()">Create</button>
+                    <button id="transactionUpdateBtn" onclick="updateTransactionConfirm()" style="display:none">Update</button>
+
+                </div>
+            </div>
+            <table id="transactionsTable">
+                <thead>
+                    <tr><th>ID</th><th>Account ID</th><th>Amount</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Budgets -->
+        <section id="budgets" class="page">
+            <button onclick="openCreateBudget()">Create Budget</button>
+            <div id="budgetPopup" class="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup('budget')">&times;</span>
+
+                    <h3 id="budgetPopupTitle">Create Budget</h3>
+                    <label for="budgetMonth">Month</label>
+                    <input type="month" id="budgetMonth" max="">
+                    <label for="budgetAmount">Amount</label>
+                    <input type="number" id="budgetAmount" placeholder="Total Amount">
+                    <label for="budgetNotes">Description</label>
+                    <input type="text" id="budgetNotes" maxlength="40" placeholder="Budget Details">
+
+                    <!-- CREATE BUTTON -->
+                    <button id="budgetCreateBtn" onclick="createBudget()">Create</button>
+
+                    <!-- UPDATE BUTTON (hidden by default) -->
+                    <button id="budgetUpdateBtn" onclick="updateBudgetConfirm()" style="display:none;">Update</button>
+                </div>
+            </div>
+
+            <table id="budgetsTable">
+                <thead>
+                    <tr>
+                        <th>Month-Year</th>
+                        <th>Amount</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Income -->
+        <section id="income" class="page">
+            <button onclick="openCreateIncome()">Create Income</button>
+
+            <div id="incomePopup" class="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup('income')">&times;</span>
+                    <h3 id="incomePopupTitle">Create Income</h3>
+                    
+                    <label for="incomeAccountId">Account ID</label>
+                    <input type="number" id="incomeAccountId" placeholder="4 digit Account ID">
+                    <label for="incomeAmount">Amount</label>
+                    <input type="number" step="0.01" id="incomeAmount" placeholder="Amount">
+                    <label for="incomeDate">Date</label>
+                    <input type="date" id="incomeDate">
+                    <label for="incomeSource">Income Source</label>
+                    <select id="incomeSource">
+                        <option>Salary</option>
+                        <option>Scholarship</option>
+                        <option>Bonus</option>
+                        <option>Benefit</option>
+                        <option>Others</option>
+                    </select>
+
+                    <button id="incomeCreateBtn" onclick="createIncome()">Create</button>
+                    <button id="incomeUpdateBtn" onclick="updateIncomeConfirm()" style="display:none;">Update</button>
+
+                </div>
+            </div>
+
+            <table id="incomeTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Account ID</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Source</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Balance -->
+        <section id="balance" class="page">
+            <table id="balanceTable">
+                <thead>
+                    <tr>
+                        <th>Account ID</th>
+                        <th>Account Name</th>
+                        <th>Total Income</th>
+                        <th>Total Expense</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Savings -->
+        <section id="savings" class="page">
+            <select id="savingsFilter" onchange="loadSavings()" style="float:right; margin-right: 5px; margin-bottom: 10px; font-weight: bold">
+                <option value="">All Months</option>
+            </select>
+
+            <table id="savingsTable">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Savings</th>
+                        <th>Currency</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
