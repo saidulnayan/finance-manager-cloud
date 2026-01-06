@@ -7,7 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -20,14 +19,22 @@ jobs:
     - name: Login to ACR
       run: az acr login --name financeacr123
 
-    - name: Build Docker Image
-      run: docker build -t financeacr123.azurecr.io/finance-app:latest .
-
-    - name: Push Docker Image
-      run: docker push financeacr123.azurecr.io/finance-app:latest
+    - name: Build and Push Docker Image
+      run: |
+        # Use the GitHub SHA to create a unique tag
+        docker build -t financeacr123.azurecr.io/finance-app:${{ github.sha }} .
+        docker push financeacr123.azurecr.io/finance-app:${{ github.sha }}
 
     - name: Set AKS Context
       run: az aks get-credentials --resource-group finance-rg --name finance-aks --overwrite-existing
 
     - name: Deploy to AKS
-      run: kubectl rollout restart deployment finance-app
+      run: |
+        # 1. Apply the manifests first to ensure the Service/Deployment structure is correct
+        kubectl apply -f k8s/deployment.yaml
+        
+        # 2. Update the deployment to use the NEW specific image tag we just pushed
+        kubectl set image deployment/finance-app finance=financeacr123.azurecr.io/finance-app:${{ github.sha }}
+        
+        # 3. Verify the rollout
+        kubectl rollout status deployment/finance-app
