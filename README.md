@@ -141,5 +141,16 @@ terraform -version
 
 docker build -t finance-app .
 docker run -p 5000:5000 finance-app
+
+
+kubectl create namespace monitoring
+helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+kubectl port-forward deployment/prometheus-grafana 3000:3000 -n monitoring
+
+kubectl get secret -n monitoring prometheus-grafana -o yaml
+
 ```
 
