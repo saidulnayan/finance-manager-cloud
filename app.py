@@ -36,7 +36,18 @@ class Transaction(db.Model):
     date = db.Column(db.Date, nullable=False)
     description = db.Column(db.String(50))
 
-# ... (Add Budget and Income classes here following the same 'db.Column' format)
+class Budget(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    month_year = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    notes = db.Column(db.String(40))
+
+class Income(db.Model):
+    id = db.Column(db.String(4), primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    source = db.Column(db.String(20))
 
 with app.app_context():
     db.create_all() # This creates the tables in Azure automatically!
