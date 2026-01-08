@@ -6,14 +6,23 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import random, string
 from sqlalchemy import func
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+# --- DATABASE CONNECTION ---
+db_user = os.environ.get('DB_USER', 'psqladmin')
+db_pass = os.environ.get('DB_PASSWORD', 'Password1234!')
+db_host = os.environ.get('DB_HOST', 'localhost')
+db_name = os.environ.get('DB_NAME', 'financedata')
+
+# Using the correct PostgreSQL driver string for Azure
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}?sslmode=require"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
-# ================= MODELS =================
-
+# --- CORRECTED MODELS ---
 class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
@@ -28,21 +37,10 @@ class Transaction(db.Model):
     date = db.Column(db.Date, nullable=False)
     description = db.Column(db.String(50))
 
-class Budget(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    month_year = db.Column(db.String(7), nullable=False)
-    amount = db.Column(db.Float, nullable=False)
-    notes = db.Column(db.String(40))
-
-class Income(db.Model):
-    id = db.Column(db.String(4), primary_key=True)
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
-    date = db.Column(db.Date, nullable=False)
-    amount = db.Column(db.Float, nullable=False)
-    source = db.Column(db.String(20))
+# ... (Add Budget and Income classes here following the same 'db.Column' format)
 
 with app.app_context():
-    db.create_all()
+    db.create_all() # This creates the tables in Azure automatically!
 
 # ================= UTIL =================
 

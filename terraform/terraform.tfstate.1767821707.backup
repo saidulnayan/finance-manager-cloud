@@ -1,0 +1,427 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.3",
+  "serial": 20,
+  "lineage": "ccc7c1bc-7277-d502-d885-e95b3af78381",
+  "outputs": {
+    "aks_cluster_name": {
+      "value": "finance-aks",
+      "type": "string"
+    },
+    "kubeconfig_command": {
+      "value": "az aks get-credentials --resource-group finance-rg --name finance-aks",
+      "type": "string"
+    },
+    "resource_group": {
+      "value": "finance-rg",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "azurerm_kubernetes_cluster",
+      "name": "aks",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "aci_connector_linux": [],
+            "ai_toolchain_operator_enabled": false,
+            "api_server_access_profile": [],
+            "auto_scaler_profile": [],
+            "automatic_upgrade_channel": "",
+            "azure_active_directory_role_based_access_control": [],
+            "azure_policy_enabled": false,
+            "bootstrap_profile": [
+              {
+                "artifact_source": "Direct",
+                "container_registry_id": ""
+              }
+            ],
+            "confidential_computing": [],
+            "cost_analysis_enabled": false,
+            "current_kubernetes_version": "1.33.5",
+            "custom_ca_trust_certificates_base64": null,
+            "default_node_pool": [
+              {
+                "auto_scaling_enabled": false,
+                "capacity_reservation_group_id": "",
+                "fips_enabled": false,
+                "gpu_driver": "",
+                "gpu_instance": "",
+                "host_encryption_enabled": false,
+                "host_group_id": "",
+                "kubelet_config": [],
+                "kubelet_disk_type": "OS",
+                "linux_os_config": [],
+                "max_count": 0,
+                "max_pods": 250,
+                "min_count": 0,
+                "name": "nodepool1",
+                "node_count": 1,
+                "node_labels": {},
+                "node_network_profile": [],
+                "node_public_ip_enabled": false,
+                "node_public_ip_prefix_id": "",
+                "only_critical_addons_enabled": false,
+                "orchestrator_version": "1.33",
+                "os_disk_size_gb": 128,
+                "os_disk_type": "Managed",
+                "os_sku": "Ubuntu",
+                "pod_subnet_id": "",
+                "proximity_placement_group_id": "",
+                "scale_down_mode": "Delete",
+                "snapshot_id": "",
+                "tags": null,
+                "temporary_name_for_rotation": "",
+                "type": "VirtualMachineScaleSets",
+                "ultra_ssd_enabled": false,
+                "upgrade_settings": [
+                  {
+                    "drain_timeout_in_minutes": 0,
+                    "max_surge": "10%",
+                    "node_soak_duration_in_minutes": 0,
+                    "undrainable_node_behavior": ""
+                  }
+                ],
+                "vm_size": "Standard_B2s_v2",
+                "vnet_subnet_id": "",
+                "workload_runtime": "",
+                "zones": null
+              }
+            ],
+            "disk_encryption_set_id": "",
+            "dns_prefix": "finance-ak-finance-rg-dfa254",
+            "dns_prefix_private_cluster": "",
+            "edge_zone": "",
+            "fqdn": "finance-ak-finance-rg-dfa254-t5u63b5u.hcp.francecentral.azmk8s.io",
+            "http_application_routing_enabled": false,
+            "http_application_routing_zone_name": "",
+            "http_proxy_config": [],
+            "id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.ContainerService/managedClusters/finance-aks",
+            "identity": [
+              {
+                "identity_ids": null,
+                "principal_id": "bcd7cf31-f44d-4d9b-a3f0-eb7bba314fa5",
+                "tenant_id": "0133bb48-f790-4560-a64d-ac46a472fbbc",
+                "type": "SystemAssigned"
+              }
+            ],
+            "image_cleaner_enabled": null,
+            "image_cleaner_interval_hours": null,
+            "ingress_application_gateway": [],
+            "key_management_service": [],
+            "key_vault_secrets_provider": [],
+            "kube_admin_config": [],
+            "kube_admin_config_raw": "",
+            "kube_config": [
+              {
+                "client_certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZIakNDQXdhZ0F3SUJBZ0lSQUwyMVRsWjNxWUJTMElCRlVacXdOcDB3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdIaGNOTWpZd01UQTNNakV5TURBd1doY05Namd3TVRBM01qRXpNREF3V2pBdwpNUmN3RlFZRFZRUUtFdzV6ZVhOMFpXMDZiV0Z6ZEdWeWN6RVZNQk1HQTFVRUF4TU1iV0Z6ZEdWeVkyeHBaVzUwCk1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBM0NRWXhSNHROSXlNTzJQSFJxamcKTCtNcDVoeXYxcEkzU2tMMDZtMEpTbUVWU3R6OVF5WnZLbHk5Qjl5ZFpwR2xXM3oyeWkvNnM2RnVhakFBVEtuQwp3dk5sRGZwcEhmZzJ1Q3JwakpYNUhRdjgvNmlnQU81RTgzZTlVVnFzbHVJTlRTK0hFeFNweENZT3dERFdWcEJaClBZeXBRc2MxN3h5OW9Ycm5vMHRUUis2NXg2ckZOK1ZNV0FIOW4xMUJudTFFZ3J1bXgzcUgyZHNQbXFBS1lIOHoKZXBPL2o0MUt5NFRYSFlkRnFXc2FLWlpwMkpTNFlMZ2tNL3gxdHBETXhtcXFxQjVsVU9GUmlkVC9ua1RRSFBlNgpianZ3c2ZDMDhqZHlheUFWUkxRYkpURjVjT2FxcnRSblFvWEs3QWsvMFIrZVJZa1MrQXliVll2T3Z6Vzg2d3QyCjJ5WVM2OGlaYUNNWmdvbndNQkNLYVVFK3piZlUvSUo2Wk1ZMGpXbWZYVEpzaUNabzlKaE1KNWdDM1ZwMTlvaXQKS0tDcjBKVU1IMk9KcUJUY0dpTkRZdlE1TjhJWXlFR3FUa252eUtmbSt1bXBXbjB5UmZYZFRIRnEyWWQyWVdsVQpVejJMU3JMaVdJcnhINmlHdk5OSmZFMmlEa0syREsrR1p0dVExOHpLMHNvUGU5THg4U1R3ZWhqSmJNNnFJZkRqCk1FOVQ0dWlldkNWS25jbXVkWmEvWXFFUWJqRUxYUk5hYVZsd2daY3lQVERnaEdqVU9iNHhJbEhKenhRSVdWTGcKamMxYkgzNEpwcTJkbVhORHVHSFpUTC83dDY0RnhZblNYQmhmZEwrakg4ZUk3bDFENmdyMmpnSWt4eDZlMXZGQgpqRXVjOFVZLzlKdlVqeDB0Sk9JTjdKc0NBd0VBQWFOV01GUXdEZ1lEVlIwUEFRSC9CQVFEQWdXZ01CTUdBMVVkCkpRUU1NQW9HQ0NzR0FRVUZCd01DTUF3R0ExVWRFd0VCL3dRQ01BQXdId1lEVlIwakJCZ3dGb0FValBVckxnZHQKQWg0N1lpM2dENUxkRHJUdHBERXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnSUJBRHBvUGNtWE9qRjBnUnJUWDFSeQorWGU0cFhuUml6YkRLZUhkTkpLNEk3emNVdTFtRjJ3OS9yZzY3RWlCM1JtR0VLRm40d0RQWVdBR05FQWtoMDN1CklBUmI1clBHWlJnWkUyYnlac0FlY2VoRTZLK3Z5Q0xvN2lzbThRdk50Rjg3U2lkVUNpc1FFVGI1cnlFbUExZ1cKaXQ1ODdybk1taW03WmdLem0wUERHSkIzMTJXZ0hDWTFOWk9nQWdzaDg0WkljNjJ5NWNPT01sYXZYRUlIc3B3UgpXQWRSR1BNM0trQzd4dWprT3RpN0JvdWdKTFdWby94ak5GMXBKcVBYcU9ZaCtrUTlYdTBhQ3g0MjE3aUxNbDR0CjVHR2R2bjRjWld0RzI4Y1VjeTNhREhjR2pMSlRqaklNRDh6K01weVBhQloyeTVMWld1TFovU1Q5V3BhWFlsbTgKS2JBTkpXZ1gzZUlQRjVYdUxQdTVJWEg5L1o1K0k5dTJ5bllhemZpZWxiNTN0NEhKTUtML2ZiNmM3TUlSWXhXUgpmcGU4eWNQNXVLVnN2bTZkL2hOcFUwUE16WHlNbmx4clVHemdHbjROTngyMUMzRk43R1VlNkFoNjZmSEtadGYyClVHYlk5Yk0vWFNQMmplTFlqUFV6aFhlK1BudXUwUHMyVVNZZ0k5M2w5S2lRVFBhYkgwNkhPTzNkNlFVOXVRNWIKTkdaSGdqRlZ4a3BHLzAycEFydmF3R3NIWXRTcnBkdGw3Nm8za2UwV1dRbWJicDJ0bUJhd1dqRHkrNzQ3M3c3LwpnZ01ORWlVa2creHNrN3gvZk9UdGdyaSt4Q1dvaExVejJwOUgvbks2c0pBZWg2WjBxUnI3eUtXcTUrQU5DWXoyCnF5b0VjT2RBcEhRazAxNk9xaHZmdHovdAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
+                "client_key": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS0FJQkFBS0NBZ0VBM0NRWXhSNHROSXlNTzJQSFJxamdMK01wNWh5djFwSTNTa0wwNm0wSlNtRVZTdHo5ClF5WnZLbHk5Qjl5ZFpwR2xXM3oyeWkvNnM2RnVhakFBVEtuQ3d2TmxEZnBwSGZnMnVDcnBqSlg1SFF2OC82aWcKQU81RTgzZTlVVnFzbHVJTlRTK0hFeFNweENZT3dERFdWcEJaUFl5cFFzYzE3eHk5b1hybm8wdFRSKzY1eDZyRgpOK1ZNV0FIOW4xMUJudTFFZ3J1bXgzcUgyZHNQbXFBS1lIOHplcE8vajQxS3k0VFhIWWRGcVdzYUtaWnAySlM0CllMZ2tNL3gxdHBETXhtcXFxQjVsVU9GUmlkVC9ua1RRSFBlNmJqdndzZkMwOGpkeWF5QVZSTFFiSlRGNWNPYXEKcnRSblFvWEs3QWsvMFIrZVJZa1MrQXliVll2T3Z6Vzg2d3QyMnlZUzY4aVphQ01aZ29ud01CQ0thVUUremJmVQovSUo2Wk1ZMGpXbWZYVEpzaUNabzlKaE1KNWdDM1ZwMTlvaXRLS0NyMEpVTUgyT0pxQlRjR2lORFl2UTVOOElZCnlFR3FUa252eUtmbSt1bXBXbjB5UmZYZFRIRnEyWWQyWVdsVVV6MkxTckxpV0lyeEg2aUd2Tk5KZkUyaURrSzIKREsrR1p0dVExOHpLMHNvUGU5THg4U1R3ZWhqSmJNNnFJZkRqTUU5VDR1aWV2Q1ZLbmNtdWRaYS9ZcUVRYmpFTApYUk5hYVZsd2daY3lQVERnaEdqVU9iNHhJbEhKenhRSVdWTGdqYzFiSDM0SnBxMmRtWE5EdUdIWlRMLzd0NjRGCnhZblNYQmhmZEwrakg4ZUk3bDFENmdyMmpnSWt4eDZlMXZGQmpFdWM4VVkvOUp2VWp4MHRKT0lON0pzQ0F3RUEKQVFLQ0FnQmNveG9EVlRRTHNYdFBnS2o2akpVdXdhYS9qV0hYWnhjNk9sdnJESEJFNnY2MVRyS0szL0VXd0FqUgo5cDRMN0ExTUp4V0pOdENHWjgvWmdwS1ZzRGhqcGwzbm1IRkVxYytKQjVIWlZjRUxYcUNjQ3g4dDFSYVI1OWowCms3WWVGa2tucW5EcWNCOFNpanRaMkJOU1FSTTBxZTBPUzF0Z1lGVlNUekNMMEdaZTFsQTZmQnZhN2pTR3NtdkMKZE5GbzZncVRBeGxuUnlKRTVJQzMvbEh2a29lY3RQRC9IU09VNmpWRjJVZFF5Rit0a1h6QUpiRkREaW81OENxdQo1VmN1eGZORHBPcllzc0NId21qQTlzOG02WDU3NWVCZldONGtNWDRHSTIyZnlEVEdIWUF2cVBtNWNXdDBuRzJzCmp5WGFRRFp2cDRPaWUxZWdrNkV3YUpJenpOSzZGUU5IajB1eGU1dXdjWUlPNStXNlR5cnpXeEZ4a2s3bEYraC8KQWNMTTdjOGtZeXhDbGNhZ3BCUUI3Y1hXSy9DZ21EeUtvTnl3ODRDOHRSQkJSRVRrSll3aXJFZUxkMkVDZDRSdwo5RjVnd1lzaWJia1AxWEhZWW00cVROMFptei9FZ2EySCsyajZqdUhWR0E1c2dUeGFEQ3lvVlpxVG9OdU9LemtMClFRU2NSNXlUN1pNZDJ4VGZwa0RjcVpJcTcxZStjemZVL3hvMkpBUmw2emZzSDJhemprcjhUU0huaEdIY0NhdWYKZHB5NlUvMFFOSEM4b2FWOUFHbFBTNE13OERhdGRTdVhZaWJQaHdGaFV2UnROZmNjek42SFVVQ2NrYWdHRmN6YwpGWlFQMUMrdHdqeStNMVdkN2pWNXFyaXpDYjR4UVJmMFAvMm9hKzhXM2dRY0tkQSt4UUtDQVFFQTZWMkthWE5vCjRkOHFjZjM5dHNIMlZQS0NlclNHSzRhV1FDY1pBem5rSVB4R2Vja085UnB3RkV6ZkdNOGlnMXRiMjdkSkpMRG8KejV2V0JvRWVvQUZUVXNydzczVTA0NHR4aWczK3ZTcFNYS05qcXBOdnYxVnlzZzRUMTN2cDhQMFEzQkY1Tlk4MwpQUXVuNlFtSE03QklNZjZGNUdnaEwva0dyN1RTWG0wVjdyamFaRUlacHVqYmxzWXRRVjhUc0I0NmlmUDNwSm9TCkFMaVJrbzFFNVRXeElYcHd3b1BYQWtLOFFXenQ0ejcxMnNRaHZqcE1kWW45TWhkdUFqQWJXQk51VW9sa041L2UKWndYUHlraTRIa2t6UXhqdndmWlVSUnRnMGROMkpDQ1l1YlBXRUlIeE9hWDQvREp5UENHSE9mbGwydmtCeGVyRgowSWpMb05nbTArMWNGd0tDQVFFQThYNHgxYlp2c1NwRUpMYmFscjdGRi9FKzBGaVFvVmtZTytFUTdPSm1wQ0tqCmFHYWJhdzBWZUpNM1JIMWIxaU5TVlUyS2hZZ1ZGRzVLSi9kbnIreW5GekVYMFFrampOei94Sk0vdk83OHlvZmgKQW8wY2N4OENpWXo5RHMwT2QzOVBzbmlFYTk2Q0x2Q2UrMTcyS1ZnY2d1a1BLY0xXTDU5dUdPY0ZkQ2psLy9SMQpJQWo1VDhTUWNGeWFjRHhRbXRuRHBtVmpuRWpURHZOeldBaUV2OEJMUVZ3U0FwcDVCSFhENTg3WFlDQndaQ3B0Cm5YMTZ6cXRUVUo5WkV3d0M5MnZidmMrd1doRTZ0OGtsRmZ2UHpPMm9CdUM2VG52OFNEUkVOeFpUS0pYYTBvN3UKMWRRLy9JODJ4aWNoMHZGQTBwTTk0V3JVbXdIVGJ4bmozTVRpRkFJeUhRS0NBUUFOM3BCV1doU1dzQU8reUtDbQpsdnFENi9IVFJ4MWVRdDUxSzUyeDhtUGJqZ0xHUkN2T1oyYlgzZ1c0WEw4cFhXbWxNa3gza01nVlpxYWV0bGZTCm5LR09IeCtZcTdlYituS2lDTmpsOXpqejVvWUs0ajVXK2NZYVRQbmk2YXRxdGkrbFZLaUdoVjk4RWxCRmFscU4KdU9GaGowWDM0RFJ3dkhVb1JpL21pc2N0Ni9DVzJ0TFpkNmR0VzVQZStiNmF6Z0VlcDlCRkNSOGV5ZGxsQTE1ZgozUVFOQUZEcFRwcWR1TWVsZjhyWG9hdE0rREVsTkNQTkxJbE95OU91NzVzQWJnODFlcExwTjJncGFWQURMclU2Cm41RWJZTVVIR3hQQkU3SjZaZjMwZ2JkeCtmMHo5L1VWUHdjQVBpTko3Wmd5MnQ2eDEvRENDWVQrTXRNZldSbGQKcVJLN0FvSUJBQXNxUUhlWEJiYjFNMDFYUHVmMVRmdDdaZUlRRmkrL2hNVlA5STVmTVV1cFpsQ3ZYY1FuU0xUWQphWmU3REFIc2hDUDVmOHdJcktEVE1JNkVlOERBZWtFeVBkMm1SSVNBdXpxRmJFNzU1YW9mZWlHNkVIU3FIRjNyCnJNK0FYNGphMC81MlgvajB3cVFVNytURFVUSThKcVZPelNxckhXZjZRUWJadDREVld6em9Pbm9Pc0NnbCtGK1oKaUhKajkzNFJUMkJrRTZUb0lRbng2NFZJYjRyR0F6UzBZd2pIeDR5VFBVbDhZS3pMRXljdVp2Ny9EQ3g5ODA0bwo3OTlYa05PTG93ODFpUHZCREN2dkdzM1haSlllN3NQU3BBcDQ1UU1abDRYTWZHL0Y3ZVlLUWJTVktaZ3RydVNlCmJvdm9KNDBVemFtY1hOUUYwNWF4WmIyUlJMcVVGMmtDZ2dFQkFJSGRGdWIvK3gzVnRSVTQ5Y2Q0bGZ5ZHo5QncKMFBYTWFpcVJ5Rm5xVlJ5c3RXdG1uSmtiQ2trNnE2OXdQQUFDWi9hTGhrbkhoTFQ3QURSNExGc0JnVHR0NFNVdwpDMFRwZW1BKy9aaHB2RUt2UmUvYjN3MkwySUdBWlRDa25hRVM5WU5NWUg2YnMxUThUSVE3NCtYNWtPbEhkb0ZtCncxNVdLdG9qZUdYUnoyREhMR3R5WFZWMHZOUERIK3B1ZzhuL0lOUDRRM2NsTkpKS1ZQR1pYRTR2RzUwZHZqTjkKOGRNTFJZUStGaHBSMURmVjNYZU5JU1lqTkxNaEFYd0R2QWErekVmV2drVzE0WmU5TTFXK3hjU0xDTzl1dDRrSQo1Mm1JRmNHZ2M3RXNPQXQwdlhKK0IxWXVsTzdMRFRPSXduMUdHaTR4NngwTGNVNmRRajRzQTJQSE5wdz0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K",
+                "cluster_ca_certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUU2VENDQXRHZ0F3SUJBZ0lSQUwvdysvL0xuNllyb1BITjNYcUsxem93RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdJQmNOTWpZd01UQTNNakV5TURBd1doZ1BNakExTmpBeE1EY3lNVE13TURCYQpNQTB4Q3pBSkJnTlZCQU1UQW1OaE1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBCnhkZnpycGZ6empwTW41UzBJN0E0Z0V6SGR1UHJEWHdxcTVpMlpTaWNOWnEwczdxdnA1VlUzeWtjYzBCNWF1QVIKdnZLL0g4aStpbWtWazI1Tys3VG5hZ043aDQ5VkVEbytoYVh0U21QZHlLTU80UVJCdWtMUEw0T1JnTGRCenVVbwpjK0NhYnY4eG9vcFQ2YXhqbXpkQnloK0dhUmNDR1l5djg5SUdPbTYvQTJmZ2I4cU9QRzRUbFBBKzA2VG91bXJ4Cm91d2prdEk3UGZDWUJqV1hYQ2xhMEd0eGNKZzhCVjBuQXBpS1IwanlYL2pVcm1VdGczbjcyTklyU0FRWVV0WUoKbkxud0FUSTU5MUtkWUtrZWFDOStvSHozMmNqU0hQTmo5ZGhxbFBZKzF5RjltSjlUQU1jM1NPMkhNblYrUi9haApxY0ZCVVFPcUJmQ3RIWnYwby9MVVFmYUo0ZmIvV0N3OGxVUmxLL05rcUp3cGJKNXpmdCtmQzcxaTBaTTBuc0VICjNyQXJQSlhHZWIwSUVtVzRMTG8yMDM0anY0Mi9CSEFKZXJkRzlpNXhZb095YWFtbEQrLytFZnJLUVZZTHBSc1gKWHg1amxJV0hlZENGbkNhWE1xdmwvM1VDQjR6bld2cndRUVJYOVBTV1Axc1AzWVJaWkZWd3FNdi9NUkpNREZHVApTa2hWOXk0U0t1ekd3cU80UnlkZTM2NnJqT0VvVmxpUmJQeGsvQkRoTUl3TzR3cFpSUTVVek80UE12a1d2alNuCnNZL2JhK3JEWDVscmNvUTYzbDZZN3lpTWpMcmRVdGNlUW1LVllPZlh5Y3VnNnhvTFB5R01YRllXQ1FsL0l3K3MKaURWbXBuc1Z6RExsNndGT0FXWkcrczFIQVFoRDFiSlJEZk1ZVFdyZ2haOENBd0VBQWFOQ01FQXdEZ1lEVlIwUApBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGSXoxS3k0SGJRSWVPMkl0CjRBK1MzUTYwN2FReE1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQ0FRQnJMeWlLQWl3dFJxQ09ReklHSnNZTHBLdTcKMUJXVS9UTmJ4MkFFZFRMdDY5V0tWOEl2TmdZb0JHa291MGNLc2Q3clBVa0U4OHByT0Q5TVZydkNZc3BpRFQvTwpsenJxS21DMC9mbks2dWZhcWNBc2RGTUpueFVjbVM3V3ZTWGZiUXdiMDFYNXpMTTdSNGxBeTlMR0xkRGxPMW1TCkU2cVB6N1V2TXorbEhnSmVrMEx0ejZYZ01nM3VjTTZ1TW5uS1AzUE5HU0FsSUN4dmwvS0IvbUVJNEdmTHdFTW4KR00reXJEZHR0dDNya3M5ZzVhOWU4TDBFTWZGWE4vTnhma280T3dmYTBkS0lwY1E3QWNTN1lvcUZUVGxLK1k2cQplajhtQS9XWVBNaHN4ZDlrQ0lSQmo3ZnZTNk1Gbjg0ZlduaGdoaXNzeDdtd3BRNGhMMkJ1ZUc2RVM2Q2xJczhXClR6Y3ROYmFRdDhxTU9zRkIvdU8wa1UyNjkrc0lMQktQUi9BTllyTnI3MlVMMzhFb3c1SW9zcjU2YWkvYk9KR28KOGF3T3JhcUM4WjFPbUc3T0ZRVjZsSWEyejZWYnAwSkE2WVVIU1I4TUdudEhvQ24zT0lndTJFZnhoQkc1ZVMrcQpwVy9VZ0hJcFBFRGF1ZmNuR0NqbG9KT0laU0RPaGVPWU5xbWg0V0p6OXNaSjE2QkhSOXRmdWhFRkVBR1FRVWVTClF2Y3h1ZDNNSE95dlAwU1IyUDJxd3pZTWl6Tzl0WDVkZWdNeDYwdnNkV1RaWjNGNXJUYzJSSS9nUDFjTFM4d1kKNXpIc1ZseTZpTjd3UGFVOE12SGNqSzYxaXR3VUdRNTc1dEtKeXl3K3luWXA5ODlJUUJPUFhuMWZacWxrSWk1YgpoWWxjWWNwajlVLzkrSVR2ZVE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
+                "host": "https://finance-ak-finance-rg-dfa254-t5u63b5u.hcp.francecentral.azmk8s.io:443",
+                "password": "uflogaujts8lvi7wjhkb37zf0rkdzk9tkflh70uyl63yedh975j7uc1pqpz0tknvnc7686eefwjsr52xk20x4689mgz03m9z6un83n1ybhe5huic3hkojb9f2hcqdmm3",
+                "username": "clusterUser_finance-rg_finance-aks"
+              }
+            ],
+            "kube_config_raw": "apiVersion: v1\nclusters:\n- cluster:\n    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUU2VENDQXRHZ0F3SUJBZ0lSQUwvdysvL0xuNllyb1BITjNYcUsxem93RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdJQmNOTWpZd01UQTNNakV5TURBd1doZ1BNakExTmpBeE1EY3lNVE13TURCYQpNQTB4Q3pBSkJnTlZCQU1UQW1OaE1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBCnhkZnpycGZ6empwTW41UzBJN0E0Z0V6SGR1UHJEWHdxcTVpMlpTaWNOWnEwczdxdnA1VlUzeWtjYzBCNWF1QVIKdnZLL0g4aStpbWtWazI1Tys3VG5hZ043aDQ5VkVEbytoYVh0U21QZHlLTU80UVJCdWtMUEw0T1JnTGRCenVVbwpjK0NhYnY4eG9vcFQ2YXhqbXpkQnloK0dhUmNDR1l5djg5SUdPbTYvQTJmZ2I4cU9QRzRUbFBBKzA2VG91bXJ4Cm91d2prdEk3UGZDWUJqV1hYQ2xhMEd0eGNKZzhCVjBuQXBpS1IwanlYL2pVcm1VdGczbjcyTklyU0FRWVV0WUoKbkxud0FUSTU5MUtkWUtrZWFDOStvSHozMmNqU0hQTmo5ZGhxbFBZKzF5RjltSjlUQU1jM1NPMkhNblYrUi9haApxY0ZCVVFPcUJmQ3RIWnYwby9MVVFmYUo0ZmIvV0N3OGxVUmxLL05rcUp3cGJKNXpmdCtmQzcxaTBaTTBuc0VICjNyQXJQSlhHZWIwSUVtVzRMTG8yMDM0anY0Mi9CSEFKZXJkRzlpNXhZb095YWFtbEQrLytFZnJLUVZZTHBSc1gKWHg1amxJV0hlZENGbkNhWE1xdmwvM1VDQjR6bld2cndRUVJYOVBTV1Axc1AzWVJaWkZWd3FNdi9NUkpNREZHVApTa2hWOXk0U0t1ekd3cU80UnlkZTM2NnJqT0VvVmxpUmJQeGsvQkRoTUl3TzR3cFpSUTVVek80UE12a1d2alNuCnNZL2JhK3JEWDVscmNvUTYzbDZZN3lpTWpMcmRVdGNlUW1LVllPZlh5Y3VnNnhvTFB5R01YRllXQ1FsL0l3K3MKaURWbXBuc1Z6RExsNndGT0FXWkcrczFIQVFoRDFiSlJEZk1ZVFdyZ2haOENBd0VBQWFOQ01FQXdEZ1lEVlIwUApBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGSXoxS3k0SGJRSWVPMkl0CjRBK1MzUTYwN2FReE1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQ0FRQnJMeWlLQWl3dFJxQ09ReklHSnNZTHBLdTcKMUJXVS9UTmJ4MkFFZFRMdDY5V0tWOEl2TmdZb0JHa291MGNLc2Q3clBVa0U4OHByT0Q5TVZydkNZc3BpRFQvTwpsenJxS21DMC9mbks2dWZhcWNBc2RGTUpueFVjbVM3V3ZTWGZiUXdiMDFYNXpMTTdSNGxBeTlMR0xkRGxPMW1TCkU2cVB6N1V2TXorbEhnSmVrMEx0ejZYZ01nM3VjTTZ1TW5uS1AzUE5HU0FsSUN4dmwvS0IvbUVJNEdmTHdFTW4KR00reXJEZHR0dDNya3M5ZzVhOWU4TDBFTWZGWE4vTnhma280T3dmYTBkS0lwY1E3QWNTN1lvcUZUVGxLK1k2cQplajhtQS9XWVBNaHN4ZDlrQ0lSQmo3ZnZTNk1Gbjg0ZlduaGdoaXNzeDdtd3BRNGhMMkJ1ZUc2RVM2Q2xJczhXClR6Y3ROYmFRdDhxTU9zRkIvdU8wa1UyNjkrc0lMQktQUi9BTllyTnI3MlVMMzhFb3c1SW9zcjU2YWkvYk9KR28KOGF3T3JhcUM4WjFPbUc3T0ZRVjZsSWEyejZWYnAwSkE2WVVIU1I4TUdudEhvQ24zT0lndTJFZnhoQkc1ZVMrcQpwVy9VZ0hJcFBFRGF1ZmNuR0NqbG9KT0laU0RPaGVPWU5xbWg0V0p6OXNaSjE2QkhSOXRmdWhFRkVBR1FRVWVTClF2Y3h1ZDNNSE95dlAwU1IyUDJxd3pZTWl6Tzl0WDVkZWdNeDYwdnNkV1RaWjNGNXJUYzJSSS9nUDFjTFM4d1kKNXpIc1ZseTZpTjd3UGFVOE12SGNqSzYxaXR3VUdRNTc1dEtKeXl3K3luWXA5ODlJUUJPUFhuMWZacWxrSWk1YgpoWWxjWWNwajlVLzkrSVR2ZVE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==\n    server: https://finance-ak-finance-rg-dfa254-t5u63b5u.hcp.francecentral.azmk8s.io:443\n  name: finance-aks\ncontexts:\n- context:\n    cluster: finance-aks\n    user: clusterUser_finance-rg_finance-aks\n  name: finance-aks\ncurrent-context: finance-aks\nkind: Config\npreferences: {}\nusers:\n- name: clusterUser_finance-rg_finance-aks\n  user:\n    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZIakNDQXdhZ0F3SUJBZ0lSQUwyMVRsWjNxWUJTMElCRlVacXdOcDB3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdIaGNOTWpZd01UQTNNakV5TURBd1doY05Namd3TVRBM01qRXpNREF3V2pBdwpNUmN3RlFZRFZRUUtFdzV6ZVhOMFpXMDZiV0Z6ZEdWeWN6RVZNQk1HQTFVRUF4TU1iV0Z6ZEdWeVkyeHBaVzUwCk1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBM0NRWXhSNHROSXlNTzJQSFJxamcKTCtNcDVoeXYxcEkzU2tMMDZtMEpTbUVWU3R6OVF5WnZLbHk5Qjl5ZFpwR2xXM3oyeWkvNnM2RnVhakFBVEtuQwp3dk5sRGZwcEhmZzJ1Q3JwakpYNUhRdjgvNmlnQU81RTgzZTlVVnFzbHVJTlRTK0hFeFNweENZT3dERFdWcEJaClBZeXBRc2MxN3h5OW9Ycm5vMHRUUis2NXg2ckZOK1ZNV0FIOW4xMUJudTFFZ3J1bXgzcUgyZHNQbXFBS1lIOHoKZXBPL2o0MUt5NFRYSFlkRnFXc2FLWlpwMkpTNFlMZ2tNL3gxdHBETXhtcXFxQjVsVU9GUmlkVC9ua1RRSFBlNgpianZ3c2ZDMDhqZHlheUFWUkxRYkpURjVjT2FxcnRSblFvWEs3QWsvMFIrZVJZa1MrQXliVll2T3Z6Vzg2d3QyCjJ5WVM2OGlaYUNNWmdvbndNQkNLYVVFK3piZlUvSUo2Wk1ZMGpXbWZYVEpzaUNabzlKaE1KNWdDM1ZwMTlvaXQKS0tDcjBKVU1IMk9KcUJUY0dpTkRZdlE1TjhJWXlFR3FUa252eUtmbSt1bXBXbjB5UmZYZFRIRnEyWWQyWVdsVQpVejJMU3JMaVdJcnhINmlHdk5OSmZFMmlEa0syREsrR1p0dVExOHpLMHNvUGU5THg4U1R3ZWhqSmJNNnFJZkRqCk1FOVQ0dWlldkNWS25jbXVkWmEvWXFFUWJqRUxYUk5hYVZsd2daY3lQVERnaEdqVU9iNHhJbEhKenhRSVdWTGcKamMxYkgzNEpwcTJkbVhORHVHSFpUTC83dDY0RnhZblNYQmhmZEwrakg4ZUk3bDFENmdyMmpnSWt4eDZlMXZGQgpqRXVjOFVZLzlKdlVqeDB0Sk9JTjdKc0NBd0VBQWFOV01GUXdEZ1lEVlIwUEFRSC9CQVFEQWdXZ01CTUdBMVVkCkpRUU1NQW9HQ0NzR0FRVUZCd01DTUF3R0ExVWRFd0VCL3dRQ01BQXdId1lEVlIwakJCZ3dGb0FValBVckxnZHQKQWg0N1lpM2dENUxkRHJUdHBERXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnSUJBRHBvUGNtWE9qRjBnUnJUWDFSeQorWGU0cFhuUml6YkRLZUhkTkpLNEk3emNVdTFtRjJ3OS9yZzY3RWlCM1JtR0VLRm40d0RQWVdBR05FQWtoMDN1CklBUmI1clBHWlJnWkUyYnlac0FlY2VoRTZLK3Z5Q0xvN2lzbThRdk50Rjg3U2lkVUNpc1FFVGI1cnlFbUExZ1cKaXQ1ODdybk1taW03WmdLem0wUERHSkIzMTJXZ0hDWTFOWk9nQWdzaDg0WkljNjJ5NWNPT01sYXZYRUlIc3B3UgpXQWRSR1BNM0trQzd4dWprT3RpN0JvdWdKTFdWby94ak5GMXBKcVBYcU9ZaCtrUTlYdTBhQ3g0MjE3aUxNbDR0CjVHR2R2bjRjWld0RzI4Y1VjeTNhREhjR2pMSlRqaklNRDh6K01weVBhQloyeTVMWld1TFovU1Q5V3BhWFlsbTgKS2JBTkpXZ1gzZUlQRjVYdUxQdTVJWEg5L1o1K0k5dTJ5bllhemZpZWxiNTN0NEhKTUtML2ZiNmM3TUlSWXhXUgpmcGU4eWNQNXVLVnN2bTZkL2hOcFUwUE16WHlNbmx4clVHemdHbjROTngyMUMzRk43R1VlNkFoNjZmSEtadGYyClVHYlk5Yk0vWFNQMmplTFlqUFV6aFhlK1BudXUwUHMyVVNZZ0k5M2w5S2lRVFBhYkgwNkhPTzNkNlFVOXVRNWIKTkdaSGdqRlZ4a3BHLzAycEFydmF3R3NIWXRTcnBkdGw3Nm8za2UwV1dRbWJicDJ0bUJhd1dqRHkrNzQ3M3c3LwpnZ01ORWlVa2creHNrN3gvZk9UdGdyaSt4Q1dvaExVejJwOUgvbks2c0pBZWg2WjBxUnI3eUtXcTUrQU5DWXoyCnF5b0VjT2RBcEhRazAxNk9xaHZmdHovdAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==\n    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS0FJQkFBS0NBZ0VBM0NRWXhSNHROSXlNTzJQSFJxamdMK01wNWh5djFwSTNTa0wwNm0wSlNtRVZTdHo5ClF5WnZLbHk5Qjl5ZFpwR2xXM3oyeWkvNnM2RnVhakFBVEtuQ3d2TmxEZnBwSGZnMnVDcnBqSlg1SFF2OC82aWcKQU81RTgzZTlVVnFzbHVJTlRTK0hFeFNweENZT3dERFdWcEJaUFl5cFFzYzE3eHk5b1hybm8wdFRSKzY1eDZyRgpOK1ZNV0FIOW4xMUJudTFFZ3J1bXgzcUgyZHNQbXFBS1lIOHplcE8vajQxS3k0VFhIWWRGcVdzYUtaWnAySlM0CllMZ2tNL3gxdHBETXhtcXFxQjVsVU9GUmlkVC9ua1RRSFBlNmJqdndzZkMwOGpkeWF5QVZSTFFiSlRGNWNPYXEKcnRSblFvWEs3QWsvMFIrZVJZa1MrQXliVll2T3Z6Vzg2d3QyMnlZUzY4aVphQ01aZ29ud01CQ0thVUUremJmVQovSUo2Wk1ZMGpXbWZYVEpzaUNabzlKaE1KNWdDM1ZwMTlvaXRLS0NyMEpVTUgyT0pxQlRjR2lORFl2UTVOOElZCnlFR3FUa252eUtmbSt1bXBXbjB5UmZYZFRIRnEyWWQyWVdsVVV6MkxTckxpV0lyeEg2aUd2Tk5KZkUyaURrSzIKREsrR1p0dVExOHpLMHNvUGU5THg4U1R3ZWhqSmJNNnFJZkRqTUU5VDR1aWV2Q1ZLbmNtdWRaYS9ZcUVRYmpFTApYUk5hYVZsd2daY3lQVERnaEdqVU9iNHhJbEhKenhRSVdWTGdqYzFiSDM0SnBxMmRtWE5EdUdIWlRMLzd0NjRGCnhZblNYQmhmZEwrakg4ZUk3bDFENmdyMmpnSWt4eDZlMXZGQmpFdWM4VVkvOUp2VWp4MHRKT0lON0pzQ0F3RUEKQVFLQ0FnQmNveG9EVlRRTHNYdFBnS2o2akpVdXdhYS9qV0hYWnhjNk9sdnJESEJFNnY2MVRyS0szL0VXd0FqUgo5cDRMN0ExTUp4V0pOdENHWjgvWmdwS1ZzRGhqcGwzbm1IRkVxYytKQjVIWlZjRUxYcUNjQ3g4dDFSYVI1OWowCms3WWVGa2tucW5EcWNCOFNpanRaMkJOU1FSTTBxZTBPUzF0Z1lGVlNUekNMMEdaZTFsQTZmQnZhN2pTR3NtdkMKZE5GbzZncVRBeGxuUnlKRTVJQzMvbEh2a29lY3RQRC9IU09VNmpWRjJVZFF5Rit0a1h6QUpiRkREaW81OENxdQo1VmN1eGZORHBPcllzc0NId21qQTlzOG02WDU3NWVCZldONGtNWDRHSTIyZnlEVEdIWUF2cVBtNWNXdDBuRzJzCmp5WGFRRFp2cDRPaWUxZWdrNkV3YUpJenpOSzZGUU5IajB1eGU1dXdjWUlPNStXNlR5cnpXeEZ4a2s3bEYraC8KQWNMTTdjOGtZeXhDbGNhZ3BCUUI3Y1hXSy9DZ21EeUtvTnl3ODRDOHRSQkJSRVRrSll3aXJFZUxkMkVDZDRSdwo5RjVnd1lzaWJia1AxWEhZWW00cVROMFptei9FZ2EySCsyajZqdUhWR0E1c2dUeGFEQ3lvVlpxVG9OdU9LemtMClFRU2NSNXlUN1pNZDJ4VGZwa0RjcVpJcTcxZStjemZVL3hvMkpBUmw2emZzSDJhemprcjhUU0huaEdIY0NhdWYKZHB5NlUvMFFOSEM4b2FWOUFHbFBTNE13OERhdGRTdVhZaWJQaHdGaFV2UnROZmNjek42SFVVQ2NrYWdHRmN6YwpGWlFQMUMrdHdqeStNMVdkN2pWNXFyaXpDYjR4UVJmMFAvMm9hKzhXM2dRY0tkQSt4UUtDQVFFQTZWMkthWE5vCjRkOHFjZjM5dHNIMlZQS0NlclNHSzRhV1FDY1pBem5rSVB4R2Vja085UnB3RkV6ZkdNOGlnMXRiMjdkSkpMRG8KejV2V0JvRWVvQUZUVXNydzczVTA0NHR4aWczK3ZTcFNYS05qcXBOdnYxVnlzZzRUMTN2cDhQMFEzQkY1Tlk4MwpQUXVuNlFtSE03QklNZjZGNUdnaEwva0dyN1RTWG0wVjdyamFaRUlacHVqYmxzWXRRVjhUc0I0NmlmUDNwSm9TCkFMaVJrbzFFNVRXeElYcHd3b1BYQWtLOFFXenQ0ejcxMnNRaHZqcE1kWW45TWhkdUFqQWJXQk51VW9sa041L2UKWndYUHlraTRIa2t6UXhqdndmWlVSUnRnMGROMkpDQ1l1YlBXRUlIeE9hWDQvREp5UENHSE9mbGwydmtCeGVyRgowSWpMb05nbTArMWNGd0tDQVFFQThYNHgxYlp2c1NwRUpMYmFscjdGRi9FKzBGaVFvVmtZTytFUTdPSm1wQ0tqCmFHYWJhdzBWZUpNM1JIMWIxaU5TVlUyS2hZZ1ZGRzVLSi9kbnIreW5GekVYMFFrampOei94Sk0vdk83OHlvZmgKQW8wY2N4OENpWXo5RHMwT2QzOVBzbmlFYTk2Q0x2Q2UrMTcyS1ZnY2d1a1BLY0xXTDU5dUdPY0ZkQ2psLy9SMQpJQWo1VDhTUWNGeWFjRHhRbXRuRHBtVmpuRWpURHZOeldBaUV2OEJMUVZ3U0FwcDVCSFhENTg3WFlDQndaQ3B0Cm5YMTZ6cXRUVUo5WkV3d0M5MnZidmMrd1doRTZ0OGtsRmZ2UHpPMm9CdUM2VG52OFNEUkVOeFpUS0pYYTBvN3UKMWRRLy9JODJ4aWNoMHZGQTBwTTk0V3JVbXdIVGJ4bmozTVRpRkFJeUhRS0NBUUFOM3BCV1doU1dzQU8reUtDbQpsdnFENi9IVFJ4MWVRdDUxSzUyeDhtUGJqZ0xHUkN2T1oyYlgzZ1c0WEw4cFhXbWxNa3gza01nVlpxYWV0bGZTCm5LR09IeCtZcTdlYituS2lDTmpsOXpqejVvWUs0ajVXK2NZYVRQbmk2YXRxdGkrbFZLaUdoVjk4RWxCRmFscU4KdU9GaGowWDM0RFJ3dkhVb1JpL21pc2N0Ni9DVzJ0TFpkNmR0VzVQZStiNmF6Z0VlcDlCRkNSOGV5ZGxsQTE1ZgozUVFOQUZEcFRwcWR1TWVsZjhyWG9hdE0rREVsTkNQTkxJbE95OU91NzVzQWJnODFlcExwTjJncGFWQURMclU2Cm41RWJZTVVIR3hQQkU3SjZaZjMwZ2JkeCtmMHo5L1VWUHdjQVBpTko3Wmd5MnQ2eDEvRENDWVQrTXRNZldSbGQKcVJLN0FvSUJBQXNxUUhlWEJiYjFNMDFYUHVmMVRmdDdaZUlRRmkrL2hNVlA5STVmTVV1cFpsQ3ZYY1FuU0xUWQphWmU3REFIc2hDUDVmOHdJcktEVE1JNkVlOERBZWtFeVBkMm1SSVNBdXpxRmJFNzU1YW9mZWlHNkVIU3FIRjNyCnJNK0FYNGphMC81MlgvajB3cVFVNytURFVUSThKcVZPelNxckhXZjZRUWJadDREVld6em9Pbm9Pc0NnbCtGK1oKaUhKajkzNFJUMkJrRTZUb0lRbng2NFZJYjRyR0F6UzBZd2pIeDR5VFBVbDhZS3pMRXljdVp2Ny9EQ3g5ODA0bwo3OTlYa05PTG93ODFpUHZCREN2dkdzM1haSlllN3NQU3BBcDQ1UU1abDRYTWZHL0Y3ZVlLUWJTVktaZ3RydVNlCmJvdm9KNDBVemFtY1hOUUYwNWF4WmIyUlJMcVVGMmtDZ2dFQkFJSGRGdWIvK3gzVnRSVTQ5Y2Q0bGZ5ZHo5QncKMFBYTWFpcVJ5Rm5xVlJ5c3RXdG1uSmtiQ2trNnE2OXdQQUFDWi9hTGhrbkhoTFQ3QURSNExGc0JnVHR0NFNVdwpDMFRwZW1BKy9aaHB2RUt2UmUvYjN3MkwySUdBWlRDa25hRVM5WU5NWUg2YnMxUThUSVE3NCtYNWtPbEhkb0ZtCncxNVdLdG9qZUdYUnoyREhMR3R5WFZWMHZOUERIK3B1ZzhuL0lOUDRRM2NsTkpKS1ZQR1pYRTR2RzUwZHZqTjkKOGRNTFJZUStGaHBSMURmVjNYZU5JU1lqTkxNaEFYd0R2QWErekVmV2drVzE0WmU5TTFXK3hjU0xDTzl1dDRrSQo1Mm1JRmNHZ2M3RXNPQXQwdlhKK0IxWXVsTzdMRFRPSXduMUdHaTR4NngwTGNVNmRRajRzQTJQSE5wdz0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K\n    token: uflogaujts8lvi7wjhkb37zf0rkdzk9tkflh70uyl63yedh975j7uc1pqpz0tknvnc7686eefwjsr52xk20x4689mgz03m9z6un83n1ybhe5huic3hkojb9f2hcqdmm3\n",
+            "kubelet_identity": [
+              {
+                "client_id": "021d770c-6b9b-458c-9d47-a272e84fc031",
+                "object_id": "a68d984f-b427-48ce-809c-650e6528b4b8",
+                "user_assigned_identity_id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/MC_finance-rg_finance-aks_francecentral/providers/Microsoft.ManagedIdentity/userAssignedIdentities/finance-aks-agentpool"
+              }
+            ],
+            "kubernetes_version": "1.33",
+            "linux_profile": [],
+            "local_account_disabled": false,
+            "location": "francecentral",
+            "maintenance_window": [],
+            "maintenance_window_auto_upgrade": [],
+            "maintenance_window_node_os": [],
+            "microsoft_defender": [],
+            "monitor_metrics": [],
+            "name": "finance-aks",
+            "network_profile": [
+              {
+                "advanced_networking": [],
+                "dns_service_ip": "10.0.0.10",
+                "ip_versions": [
+                  "IPv4"
+                ],
+                "load_balancer_profile": [
+                  {
+                    "backend_pool_type": "NodeIPConfiguration",
+                    "effective_outbound_ips": [
+                      "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/MC_finance-rg_finance-aks_francecentral/providers/Microsoft.Network/publicIPAddresses/edb6bf10-1827-4537-930e-f201060e847a"
+                    ],
+                    "idle_timeout_in_minutes": 0,
+                    "managed_outbound_ip_count": 1,
+                    "managed_outbound_ipv6_count": 0,
+                    "outbound_ip_address_ids": [],
+                    "outbound_ip_prefix_ids": [],
+                    "outbound_ports_allocated": 0
+                  }
+                ],
+                "load_balancer_sku": "standard",
+                "nat_gateway_profile": [],
+                "network_data_plane": "azure",
+                "network_mode": "",
+                "network_plugin": "azure",
+                "network_plugin_mode": "overlay",
+                "network_policy": "",
+                "outbound_type": "loadBalancer",
+                "pod_cidr": "10.244.0.0/16",
+                "pod_cidrs": [
+                  "10.244.0.0/16"
+                ],
+                "service_cidr": "10.0.0.0/16",
+                "service_cidrs": [
+                  "10.0.0.0/16"
+                ]
+              }
+            ],
+            "node_os_upgrade_channel": "NodeImage",
+            "node_provisioning_profile": [
+              {
+                "default_node_pools": "Auto",
+                "mode": "Manual"
+              }
+            ],
+            "node_resource_group": "MC_finance-rg_finance-aks_francecentral",
+            "node_resource_group_id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/MC_finance-rg_finance-aks_francecentral",
+            "oidc_issuer_enabled": false,
+            "oidc_issuer_url": "",
+            "oms_agent": [],
+            "open_service_mesh_enabled": false,
+            "portal_fqdn": "finance-ak-finance-rg-dfa254-t5u63b5u.portal.hcp.francecentral.azmk8s.io",
+            "private_cluster_enabled": false,
+            "private_cluster_public_fqdn_enabled": false,
+            "private_dns_zone_id": "",
+            "private_fqdn": "",
+            "resource_group_name": "finance-rg",
+            "role_based_access_control_enabled": true,
+            "run_command_enabled": true,
+            "service_mesh_profile": [],
+            "service_principal": [],
+            "sku_tier": "Free",
+            "storage_profile": [],
+            "support_plan": "KubernetesOfficial",
+            "tags": null,
+            "timeouts": null,
+            "upgrade_override": [],
+            "web_app_routing": [],
+            "windows_profile": [],
+            "workload_autoscaler_profile": [],
+            "workload_identity_enabled": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_admin_config"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_admin_config_raw"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_config"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_config_raw"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIyIn0=",
+          "dependencies": [
+            "azurerm_resource_group.rg"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_postgresql_flexible_server",
+      "name": "db",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "administrator_login": "psqladmin",
+            "administrator_password": "Password1234!",
+            "administrator_password_wo": null,
+            "administrator_password_wo_version": 0,
+            "authentication": [
+              {
+                "active_directory_auth_enabled": false,
+                "password_auth_enabled": true,
+                "tenant_id": ""
+              }
+            ],
+            "auto_grow_enabled": false,
+            "backup_retention_days": 7,
+            "create_mode": null,
+            "customer_managed_key": [],
+            "delegated_subnet_id": "",
+            "fqdn": "finance-db-server-93610.postgres.database.azure.com",
+            "geo_redundant_backup_enabled": false,
+            "high_availability": [],
+            "id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/finance-db-server-93610",
+            "identity": [],
+            "location": "francecentral",
+            "maintenance_window": [],
+            "name": "finance-db-server-93610",
+            "point_in_time_restore_time_in_utc": "",
+            "private_dns_zone_id": "",
+            "public_network_access_enabled": true,
+            "replication_role": "",
+            "resource_group_name": "finance-rg",
+            "sku_name": "B_Standard_B1ms",
+            "source_server_id": "",
+            "storage_mb": 32768,
+            "storage_tier": "P4",
+            "tags": {},
+            "timeouts": null,
+            "version": "14",
+            "zone": ""
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "administrator_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozNjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjozNjAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "azurerm_resource_group.rg",
+            "random_integer.suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_postgresql_flexible_server_database",
+      "name": "financedb",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "charset": "UTF8",
+            "collation": "en_US.utf8",
+            "id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/finance-db-server-93610/databases/financedata",
+            "name": "financedata",
+            "server_id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/finance-db-server-93610",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "azurerm_postgresql_flexible_server.db",
+            "azurerm_resource_group.rg",
+            "random_integer.suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_postgresql_flexible_server_firewall_rule",
+      "name": "allow_access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "end_ip_address": "0.0.0.0",
+            "id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/finance-db-server-93610/firewallRules/allow-azure-access",
+            "name": "allow-azure-access",
+            "server_id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/finance-db-server-93610",
+            "start_ip_address": "0.0.0.0",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "flexible_server_name": "finance-db-server-93610",
+            "name": "allow-azure-access",
+            "resource_group_name": "finance-rg",
+            "subscription_id": "dfa2542a-4d2c-4cde-a89b-161dbccd186f"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "azurerm_postgresql_flexible_server.db",
+            "azurerm_resource_group.rg",
+            "random_integer.suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "rg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/dfa2542a-4d2c-4cde-a89b-161dbccd186f/resourceGroups/finance-rg",
+            "location": "francecentral",
+            "managed_by": "",
+            "name": "finance-rg",
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "name": "finance-rg",
+            "subscription_id": "dfa2542a-4d2c-4cde-a89b-161dbccd186f"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_integer",
+      "name": "suffix",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "93610",
+            "keepers": null,
+            "max": 99999,
+            "min": 10000,
+            "result": 93610,
+            "seed": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

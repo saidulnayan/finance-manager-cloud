@@ -1,5 +1,9 @@
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
   subscription_id = "dfa2542a-4d2c-4cde-a89b-161dbccd186f"
 }
 
@@ -36,6 +40,13 @@ resource "azurerm_postgresql_flexible_server" "db" {
   administrator_password = "Password1234!" # In production, use a Secret!
   storage_mb             = 32768
   sku_name               = "B_Standard_B1ms" # Cheapest tier
+
+  lifecycle {
+    ignore_changes = [
+      zone,
+      high_availability[0].standby_availability_zone
+    ]
+  }
 }
 
 # 2. Create the specific database inside the server
