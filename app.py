@@ -11,14 +11,13 @@ import os
 app = Flask(__name__)
 
 # --- DATABASE CONNECTION ---
-db_user = os.environ.get('DB_USER', 'psqladmin')
-db_pass = os.environ.get('DB_PASSWORD', 'Password1234!')
-db_host = os.environ.get('DB_HOST', 'localhost')
-db_name = os.environ.get('DB_NAME', 'financedata')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_NAME = os.getenv('DB_NAME')
 
-# Using the correct PostgreSQL driver string for Azure
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}?sslmode=require"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# This creates the connection string for Azure
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?sslmode=require"
 
 db = SQLAlchemy(app)
 
