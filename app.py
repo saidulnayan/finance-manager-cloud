@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 import random, string
-from sqlalchemy import func
+from sqlalchemy import func, extract
 import os
 
 app = Flask(__name__)
@@ -18,6 +18,7 @@ DB_NAME = os.getenv('DB_NAME')
 
 # This creates the connection string for Azure
 app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?sslmode=require"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
@@ -68,13 +69,13 @@ def index():
 @app.route('/stats/summary/<int:year>')
 def stats_summary(year):
     rows = db.session.query(
-        func.strftime('%m', Income.date),
+        extract('month', Income.date),
         func.sum(Income.amount)
     ).filter(
-        func.strftime('%Y', Income.date) == str(year)
-    ).group_by(func.strftime('%m', Income.date)).all()
+        extract('year', Income.date) == year
+    ).group_by(extract('month', Income.date)).all()
 
-    values = [r[1] for r in rows if r[1] > 0]
+    values = [float(r[1]) for r in rows if r[1] > 0]
 
     if not values:
         return jsonify({'mean':0,'median':0,'min':0,'max':0,'std':0})
@@ -92,13 +93,13 @@ def stats_summary(year):
 @app.route('/stats/income_forecast/<int:year>')
 def income_forecast(year):
     rows = db.session.query(
-        func.strftime('%m', Income.date),
+        extract('month', Income.date),
         func.sum(Income.amount)
     ).filter(
-        func.strftime('%Y', Income.date) == str(year)
-    ).group_by(func.strftime('%m', Income.date)).all()
+        extract('year', Income.date) == year
+    ).group_by(extract('month', Income.date)).all()
 
-    y = [r[1] for r in rows if r[1] > 0]
+    y = [float(r[1]) for r in rows if r[1] > 0]
 
     if len(y) < 2:
         return jsonify({'message': 'Not enough data'})
@@ -162,7 +163,7 @@ def transactions():
                 'id': t.id,
                 'account_id': t.account_id,
                 'amount': t.amount,
-                'date': t.date,
+                'date': str(t.date),
                 'category': t.category,
                 'description': t.description
             } for t in txs
@@ -374,23 +375,23 @@ def update_income():
 
 @app.route('/income/years')
 def income_years():
-    years = db.session.query(func.strftime('%Y', Income.date)).distinct().all()
-    return jsonify(sorted([int(y[0]) for y in years]))
+    years = db.session.query(extract('year', Income.date)).distinct().all()
+    return jsonify(sorted([int(y[0]) for y in years if y[0] is not None]))
 
 # ================= MONTHLY BY YEAR =================
 
 @app.route('/income/monthly/<int:year>')
 def income_by_year(year):
     rows = db.session.query(
-        func.strftime('%m', Income.date),
+        extract('month', Income.date),
         func.sum(Income.amount)
     ).filter(
-        func.strftime('%Y', Income.date) == str(year)
-    ).group_by(func.strftime('%m', Income.date)).all()
+        extract('year', Income.date) == year
+    ).group_by(extract('month', Income.date)).all()
 
     months = {str(i).zfill(2): 0 for i in range(1, 13)}
     for m, total in rows:
-        months[m] = float(total)
+        months[m] = float(total) 
 
     return jsonify(list(months.values()))
 
@@ -439,12 +440,15 @@ def savings():
     budgets = Budget.query.all()
     savings_list = []
     for b in budgets:
-        month = b.month_year
+        # month = b.month_year
+        year,month = map(int, b.month_year.split('-'))
         budget_amount = b.amount
         # total expenses in that month
-        expenses = Transaction.query.filter(Transaction.date.like(f"{month}-%")).all()
+        expenses = Transaction.query.filter(extract('year',Transaction.date)== year, extract('month', Transaction.date)==month).all()
+            
+        # Transaction.date.like(f"{month}-%")).all()
         total_exp = sum(e.amount for e in expenses)
-        savings_list.append({'month_year':month,'savings':budget_amount-total_exp,'currency':'HUF'})
+        savings_list.append({'month_year':b.month_year,'savings':budget_amount-total_exp,'currency':'HUF'})
     return jsonify(savings_list)
 
 if __name__ == '__main__':
