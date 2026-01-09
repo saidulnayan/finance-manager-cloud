@@ -391,7 +391,7 @@ def income_by_year(year):
 
     months = {str(i).zfill(2): 0 for i in range(1, 13)}
     for m, total in rows:
-        months[m] = float(total) 
+        months[str(int(m)).zfill(2)] = float(total) 
 
     return jsonify(list(months.values()))
 
